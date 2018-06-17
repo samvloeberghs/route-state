@@ -2,12 +2,132 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "example-one": {
+      "root": "apps/example-one/",
+      "sourceRoot": "apps/example-one/src",
+      "projectType": "application",
+      "prefix": "e1",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/example-one",
+            "index": "apps/example-one/src/index.html",
+            "main": "apps/example-one/src/main.ts",
+            "polyfills": "apps/example-one/src/polyfills.ts",
+            "tsConfig": "apps/example-one/tsconfig.app.json",
+            "assets": [
+              "apps/example-one/src/favicon.ico",
+              "apps/example-one/src/assets"
+            ],
+            "styles": [
+              "apps/example-one/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/example-one/src/environments/environment.ts",
+                  "with": "apps/example-one/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "example-one:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example-one:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "example-one:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/example-one/src/test.ts",
+            "polyfills": "apps/example-one/src/polyfills.ts",
+            "tsConfig": "apps/example-one/tsconfig.spec.json",
+            "karmaConfig": "apps/example-one/karma.conf.js",
+            "styles": [
+              "apps/example-one/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/example-one/src/favicon.ico",
+              "apps/example-one/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/example-one/tsconfig.app.json",
+              "apps/example-one/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "example-one-e2e": {
+      "root": "apps/example-one-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/example-one-e2e/protractor.conf.js",
+            "devServerTarget": "example-one:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/example-one-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/schematics"
-  }
+  },
+  "defaultProject": "example-one"
 }

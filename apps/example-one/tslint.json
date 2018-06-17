@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngxs-route-state",
+      "e1",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ngxs-route-state",
+      "e1",
       "kebab-case"
     ]
   }
