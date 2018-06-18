@@ -9,7 +9,6 @@ import { ItemComponent } from './item/item.component';
 import { ItemResolver } from './item/item.resolver';
 import { ItemsResolver } from './items.resolver';
 import { ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
   imports: [
     CommonModule,

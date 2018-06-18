@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from './item.model';
+import { distinctUntilChanged, filter, take } from 'rxjs/operators';
+import { StateService } from '../state.service';
+import { ItemState } from './item.state';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'e1-item',

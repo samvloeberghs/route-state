@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { AComponent } from './a/a.component';
+import { NgForageConfig } from 'ngforage';
 
 @NgModule({
   declarations: [
@@ -33,4 +34,9 @@ import { AComponent } from './a/a.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(ngfConfig: NgForageConfig) {
+    ngfConfig.configure({
+      name: 'items'
+    });
+  }
 }
