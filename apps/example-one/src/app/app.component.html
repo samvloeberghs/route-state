@@ -1,2 +1,39 @@
 <h1>Example one</h1>
-<router-outlet></router-outlet>
+
+<hr/>
+
+<div class="wrapper">
+    <div class="left">
+
+        <ul>
+            <li>
+                <a [routerLink]="'a'"
+                   [routerLinkActive]="'active'">
+                    Navigate to A
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'b'"
+                   [routerLinkActive]="'active'">
+                    Navigate to B
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="right">
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>
+
+<hr/>
+
+<h5>Legend</h5>
+<p>
+    <span class="active">Green means active route</span><br/>
+    <span class="inactive">Blue means inactive route</span><br/>
+    <span class="warning">Orange means warning</span><br/>
+    <span class="error">Red means error</span>
+</p>

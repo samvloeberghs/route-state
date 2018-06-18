@@ -1,1 +1,130 @@
 /* You can add global styles to this file, and also import other style files */
+$active-color: green;
+$inactive-color: blue;
+$warning-color: orange;
+$error-color: red;
+
+body {
+  font: {
+    size: 1rem;
+    family: 'Montserrat', sans-serif;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: {
+    bottom: 20px;
+  }
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: {
+    bottom: 15px;
+  }
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin: {
+    bottom: 10px;
+  }
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: {
+    bottom: 5px;
+  }
+}
+
+h5 {
+  font-size: 1.1rem;
+  margin: {
+    bottom: 0;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+  margin: {
+    bottom: 0;
+  }
+}
+
+p, label {
+  font-size: 0.9rem;
+}
+
+a {
+
+  color: $inactive-color;
+
+  &.active {
+    color: $active-color;
+  }
+}
+
+.active {
+  color: $active-color;
+}
+
+.inactive {
+  color: $inactive-color;
+}
+
+.warning {
+  color: $warning-color;
+}
+
+.error {
+  color: $error-color;
+}
+
+.wrapper {
+  display: flex;
+  .left {
+    flex: 0 200px;
+    border-right: 1px solid #aaa;
+    margin: {
+      right: 25px;
+    }
+  }
+  .right {
+    flex: 1;
+  }
+}
+
+ul.tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+  width: 100%;
+  li {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    width: 50%;
+    box-sizing: border-box;
+    border: {
+      top: 1px solid #aaa;
+      bottom: 1px solid #aaa;
+      right: 1px solid #aaa;
+    }
+    padding: 5px 0;
+    &:last-child {
+      border: {
+        right: 0;
+      }
+    }
+  }
+}
+
+.error-field {
+  .error-message,
+  label {
+    color: $error-color;
+  }
+}

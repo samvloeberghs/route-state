@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <div class="left">
+
+        <ul>
+            <li *ngFor="let item of itemsService.items$ | async">
+                <a [routerLink]="['item', item.id]"
+                   [routerLinkActive]="'active'">
+                    Show {{item.name}}
+                </a>
+            </li>
+        </ul>
+
+        <p>
+            a works!
+        </p>
+
+        <pre>{{ itemsService.items$ | async | json }}</pre>
+
+    </div>
+    <div class="right">
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>
+

@@ -1,0 +1,18 @@
+<pre>{{ item | json }}</pre>
+
+<ul class="tabs">
+    <li>
+        <a [routerLink]="'one'"
+           [routerLinkActive]="'active'">
+            Sub One
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="'two'"
+           [routerLinkActive]="'active'">
+            Sub Two
+        </a>
+    </li>
+</ul>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,26 @@
+<p>
+    one works!
+</p>
+
+<form no-validate (ngSubmit)="submitOneForm($event)" [formGroup]="oneForm">
+
+    <div [class.error-field]="oneFormSubmitted && oneForm.get('email').errors">
+        <label aria-hidden="true" for="email" class="control-label">
+            Email
+        </label>
+        <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email *"/>
+        <p *ngIf="oneFormSubmitted && ( oneForm.get('email').hasError('email') || oneForm.get('email').hasError('required'))"
+           class="error-message">
+            Valid email required
+        </p>
+    </div>
+
+    <div>
+
+        <button>
+            Submit
+        </button>
+
+    </div>
+
+</form>
