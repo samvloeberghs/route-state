@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ItemsService } from '../items.service';
 import { Item } from './item.model';
 import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { SetCurrentIdAction } from './item.actions';
 
 @Injectable()
 export class ItemResolver implements Resolve<Item> {
@@ -12,7 +14,8 @@ export class ItemResolver implements Resolve<Item> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Item> {
-    return this.itemsService.getItem(+route.params.itemId)
+
+    return this.itemsService.getItem(+route.params.itemId);
   }
 
 }

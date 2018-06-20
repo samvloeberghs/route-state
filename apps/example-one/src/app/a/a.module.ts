@@ -9,12 +9,17 @@ import { ItemComponent } from './item/item.component';
 import { ItemResolver } from './item/item.resolver';
 import { ItemsResolver } from './items.resolver';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxsModule } from '@ngxs/store';
+import { ItemsState } from './items.state';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ARoutingModule
+    ARoutingModule,
+    NgxsModule.forFeature([
+      ItemsState
+    ]),
   ],
   declarations: [OneComponent, TwoComponent, AComponent, ItemComponent],
   providers: [ItemResolver, ItemsResolver]
