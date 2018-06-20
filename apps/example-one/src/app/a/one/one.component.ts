@@ -61,6 +61,7 @@ export class OneComponent implements OnInit, OnDestroy {
         ),
         this.oneForm.valueChanges
       ).subscribe(([state, currentOneFormState]) => {
+        debugger;
         this.store.dispatch(new SetItemOneFormStateAction({
           id: state.currentId,
           item: {
@@ -90,6 +91,7 @@ export class OneComponent implements OnInit, OnDestroy {
     this.store.select(state => state.a).pipe(
       take(1)
     ).subscribe(state => {
+      debugger;
       this.store.dispatch(new SetItemOneFormStateAction({
         id: state.currentId,
         item: {

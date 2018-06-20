@@ -53,7 +53,6 @@ export class ItemsState {
   @Action(SetItemUrlStateAction)
   setItemUrlState({ getState, patchState, dispatch }: StateContext<ItemsStateModel>, { payload }: SetItemUrlStateAction) {
     const currentState = getState();
-    debugger;
     if (payload && currentState && currentState.currentId) {
       const newState = this.patchItemExtraState(currentState, { id: currentState.currentId, item: payload });
       patchState(newState);
