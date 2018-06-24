@@ -4,7 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
-import { AComponent } from './a/a.component';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,10 +32,18 @@ import { AComponent } from './a/a.component';
         path: 'b',
         loadChildren: './b/b.module#BModule'
       }
-    ], { initialNavigation: 'enabled' })
+    ], { initialNavigation: 'enabled' }),
+
+    NgxsModule.forRoot([]),
+    NgxsRouterPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production
+    })
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
