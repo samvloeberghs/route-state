@@ -9,7 +9,7 @@ import { Item } from '../item/item.model';
 @Component({
   selector: 'e1-item-list',
   templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css']
+  styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
 
