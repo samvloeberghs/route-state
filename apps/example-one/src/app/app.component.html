@@ -7,15 +7,17 @@
 
         <ul>
             <li>
-                <a [routerLink]="'a'"
-                   [routerLinkActive]="'active'">
-                    Navigate to A
+                <a [routerLink]="'patients'"
+                   [routerLinkActive]="'active'"
+                   (click)="selectModule($event, MODULE.PATIENTS)">
+                    Navigate to Patients
                 </a>
             </li>
             <li>
-                <a [routerLink]="'b'"
-                   [routerLinkActive]="'active'">
-                    Navigate to B
+                <a [routerLink]="'calendar'"
+                   [routerLinkActive]="'active'"
+                   (click)="selectModule($event, MODULE.CALENDAR)">
+                    Navigate to Calendar
                 </a>
             </li>
         </ul>
@@ -23,7 +25,23 @@
     </div>
     <div class="right">
 
-        <router-outlet></router-outlet>
+        <!--
+        We keep this one here, because we want to show the list of patients always,
+        and everywhere in the application
+        -->
+
+        <e1-patients-list></e1-patients-list>
+
+        <hr/>
+
+        <e1-patients [hidden]="(selectedModule$ | async) !== MODULE.PATIENTS"></e1-patients>
+
+        <!--
+        The router remains as it handles the reactiveness
+        Note: it has no content and all routes have the dummy component
+        -->
+
+        <router-outlet [hidden]="(selectedModule$ | async) === MODULE.PATIENTS"></router-outlet>
 
     </div>
 </div>

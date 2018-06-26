@@ -1,0 +1,9 @@
+<!-- TODO: should be a other type, condensed from type, only header info -->
+<e1-patient *ngFor="let patient of patients$ | async; trackBy: trackByPatient"
+            [patient]="patient"
+            [hidden]="(currentPatientId$ | async) !== patient.id"></e1-patient>
+
+<p *ngIf="!(patients$ | async)">
+    Patients works
+</p>
+

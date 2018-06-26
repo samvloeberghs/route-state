@@ -1,0 +1,23 @@
+<pre>{{ patient | json }}</pre>
+
+<ul class="tabs">
+    <li>
+        <a [routerLink]="['patients', patient.id, 'one']"
+           [routerLinkActive]="'active'"
+           (click)="selectPart($event, PATIENTPART.PARTONE)">
+            Sub One
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="['patients', patient.id, 'two']"
+           [routerLinkActive]="'active'"
+           (click)="selectPart($event, PATIENTPART.PARTTWO)">
+            Sub Two
+        </a>
+    </li>
+</ul>
+
+<e1-one [hidden]="selectedPatientPart !== PATIENTPART.PARTONE"></e1-one>
+<e1-two [hidden]="selectedPatientPart !== PATIENTPART.PARTTWO"></e1-two>
+
+

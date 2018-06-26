@@ -53,6 +53,12 @@ h6 {
   }
 }
 
+hr {
+  background: #aaa;
+  border: none;
+  height: 1px;
+}
+
 p, label {
   font-size: 0.9rem;
 }
@@ -85,7 +91,7 @@ a {
 .wrapper {
   display: flex;
   .left {
-    flex: 0 200px;
+    flex: 0 250px;
     border-right: 1px solid #aaa;
     margin: {
       right: 25px;

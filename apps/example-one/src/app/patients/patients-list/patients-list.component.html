@@ -1,0 +1,12 @@
+<ul>
+
+    <!-- TODO: should be a other type, abstracted from type, only header info -->
+    <li *ngFor="let patient of patients$ | async; trackBy: trackByPatient">
+        <a [routerLink]="['patients', patient.id]"
+           [routerLinkActive]="'active'"
+           (click)="selectPatient($event, patient.id)">
+            Show {{patient.name}}
+        </a>
+    </li>
+
+</ul>
