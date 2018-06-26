@@ -1,0 +1,12 @@
+<ul class="item-overview">
+
+    <!-- TODO: should be a other type, abstracted from type, only header info -->
+    <li *ngFor="let item of items$ | async; trackBy: trackByItem">
+        <a [routerLink]="['a', 'item', item.id]"
+           [routerLinkActive]="'active'"
+           (click)="selectItem($event, item.id)">
+            Show {{item.name}}
+        </a>
+    </li>
+
+</ul>

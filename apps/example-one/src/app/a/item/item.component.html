@@ -2,17 +2,22 @@
 
 <ul class="tabs">
     <li>
-        <a [routerLink]="'one'"
-           [routerLinkActive]="'active'">
+        <a [routerLink]="['a', 'item', item.id, 'one']"
+           [routerLinkActive]="'active'"
+           (click)="selectPart($event, ITEMPART.PARTONE)">
             Sub One
         </a>
     </li>
     <li>
-        <a [routerLink]="'two'"
-           [routerLinkActive]="'active'">
+        <a [routerLink]="['a', 'item', item.id, 'two']"
+           [routerLinkActive]="'active'"
+           (click)="selectPart($event, ITEMPART.PARTTWO)">
             Sub Two
         </a>
     </li>
 </ul>
 
-<router-outlet></router-outlet>
+<e1-one [hidden]="selectedItemPart !== ITEMPART.PARTONE"></e1-one>
+<e1-two [hidden]="selectedItemPart !== ITEMPART.PARTTWO"></e1-two>
+
+

@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TwoComponent } from './two/two.component';
-import { AComponent } from './a.component';
-import { ItemComponent } from './item/item.component';
-import { OneComponent } from './one/one.component';
+import { DummyComponent } from './dummy.component';
 import { ItemResolver } from './item/item.resolver';
-import { ItemsResolver } from './items.resolver';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AComponent,
-    resolve: {
-      items: ItemsResolver
-    },
+    path: 'a',
+    component: DummyComponent,
     children: [
       {
         path: 'item/:itemId',
-        component: ItemComponent,
-        resolve: {
-          item: ItemResolver
+        component: DummyComponent,
+        resolve:{
+          itemSet: ItemResolver
         },
         children: [
           {
@@ -29,11 +22,11 @@ const routes: Routes = [
           },
           {
             path: 'one',
-            component: OneComponent
+            component: DummyComponent
           },
           {
             path: 'two',
-            component: TwoComponent
+            component: DummyComponent
           }
         ]
       }

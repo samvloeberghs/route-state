@@ -1,45 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Item } from './item/item.model';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { of as observableOf } from 'rxjs';
 import { StateService } from './state.service';
+import { Store } from '@ngxs/store';
+import { SetItemsAction } from './items.actions';
+import { Item } from './item/item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
 
-  private items = new BehaviorSubject<Item[]>(undefined);
-  items$ = this.items.asObservable();
-
   private itemsList = [
-    {
+    <Item>{
       id: 1,
       name: 'Sam',
       role: 'developer'
     },
-    {
+    <Item>{
       id: 2,
       name: 'Jurgen',
       role: 'architect'
     }
   ];
 
-  constructor(private stateService: StateService) {
+  constructor(private stateService: StateService,
+              private store: Store) {
+    this.getItems();
   }
 
-  getItem(id: number): Observable<Item> {
-    const selectedItem = this.itemsList.find((item) => {
-      return item.id === id;
-    });
-    this.stateService.currentItemId = id;
-    this.stateService.getItemState(id);
-    return observableOf(selectedItem);
-  }
-
-  getItems(): Observable<Item[]> {
-    this.items.next(this.itemsList);
-    return observableOf(this.itemsList);
+  private getItems() {
+    this.store.dispatch(new SetItemsAction(this.itemsList));
   }
 
 }

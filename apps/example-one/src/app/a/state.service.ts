@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ItemState } from './item/item.state';
 import { BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { NgForage } from 'ngforage';
+import { ItemsState } from './items.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateService {
 
-  private currentItemsState = new BehaviorSubject<ItemState>(undefined);
-  currentItemState$ = this.currentItemsState.asObservable();
+  private currentItemsState = new BehaviorSubject<ItemsState>(undefined);
+  currentItemsState$ = this.currentItemsState.asObservable();
   currentItemId: number;
 
   private itemsState = {};
@@ -35,7 +35,7 @@ export class StateService {
     return state;
   }
 
-  setItemState(id: number, newItemState: ItemState) {
+  setItemState(id: number, newItemState: ItemsState) {
     this.itemsState[id] = {
       ...this.itemsState[id],
       ...newItemState

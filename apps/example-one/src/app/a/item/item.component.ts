@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from './item.model';
-import { distinctUntilChanged, filter, take } from 'rxjs/operators';
-import { StateService } from '../state.service';
-import { ItemState } from './item.state';
-import { combineLatest } from 'rxjs';
+
+enum ITEMPART {
+  PARTONE = 'e1-one',
+  PARTTWO = 'e1-two'
+}
 
 @Component({
   selector: 'e1-item',
@@ -13,15 +13,23 @@ import { combineLatest } from 'rxjs';
 })
 export class ItemComponent implements OnInit {
 
-  item: Item;
+  @Input() item: Item;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  ITEMPART = ITEMPART;
+  selectedItemPart = ITEMPART.PARTONE;
+
+
+  constructor() {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe((data: { item: Item }) => {
-      this.item = data.item;
-    });
+
+
+  }
+
+  // TODO: set in state machine
+  selectPart($event, part: ITEMPART) {
+    this.selectedItemPart = part;
   }
 
 }
