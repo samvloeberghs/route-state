@@ -1,0 +1,7 @@
+<div *ngIf="user$ | async as user; else loggedOut">
+    Welcome {{user.name}}, <a (click)="logout($event)" href="#">logout</a>
+</div>
+
+<ng-template #loggedOut>
+    Please <a (click)="login($event)" href="#">login</a>, guest.
+</ng-template>
