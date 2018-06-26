@@ -27,10 +27,6 @@ export class OneComponent implements OnInit, OnDestroy {
         )]
       }
     );
-    // todo: cleanup subscription
-    this.subscriptions.push(this.oneForm.valueChanges.subscribe((_) => {
-      console.log(_);
-    }));
 
   }
 
@@ -42,9 +38,12 @@ export class OneComponent implements OnInit, OnDestroy {
 
     this.oneFormSubmitted = true;
     const raw: any = this.oneForm.getRawValue();
-    
+
     if (this.oneForm.valid) {
       // do stuff when valid
+      console.log('valid', raw);
+    } else {
+      console.log('invalid', raw);
     }
 
     $event.preventDefault();

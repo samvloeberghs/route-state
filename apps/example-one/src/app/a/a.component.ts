@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from './items.service';
+import { StateService } from './state.service';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Item } from './item/item.model';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Select, Store } from '@ngxs/store';
 
 @Component({
   selector: 'e1-a',
@@ -10,13 +14,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AComponent implements OnInit {
 
-  items: Item[];
+  @Select(state => state.ItemsState.currentItemId) currentItemId$: Observable<number>;
+  @Select(state => state.ItemsState.items) items$: Observable<Item>;
 
-  constructor(public itemsService: ItemsService) {
+  constructor() {
   }
 
   ngOnInit() {
 
+  }
+
+  trackByItem(index, item: Item) {
+    return item.id;
   }
 
 }

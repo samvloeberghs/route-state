@@ -8,13 +8,15 @@
         <ul>
             <li>
                 <a [routerLink]="'a'"
-                   [routerLinkActive]="'active'">
+                   [routerLinkActive]="'active'"
+                   (click)="selectModule($event, MODULE.A)">
                     Navigate to A
                 </a>
             </li>
             <li>
                 <a [routerLink]="'b'"
-                   [routerLinkActive]="'active'">
+                   [routerLinkActive]="'active'"
+                   (click)="selectModule($event, MODULE.B)">
                     Navigate to B
                 </a>
             </li>
@@ -23,7 +25,23 @@
     </div>
     <div class="right">
 
-        <router-outlet></router-outlet>
+        <!--
+        We keep this one here, because we want to show the list of items always,
+        and everywhere in the application
+        -->
+
+        <e1-item-list></e1-item-list>
+
+        <hr/>
+
+        <e1-a [hidden]="(selectedModule$ | async) !== MODULE.A"></e1-a>
+
+        <!--
+        The router remains as it handles the reactiveness
+        Note: it has no content and all routes have the dummy component
+        -->
+
+        <router-outlet [hidden]="(selectedModule$ | async) !== MODULE.B"></router-outlet>
 
     </div>
 </div>

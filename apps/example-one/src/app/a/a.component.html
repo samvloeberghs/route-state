@@ -1,26 +1,5 @@
-<div class="wrapper">
-    <div class="left">
-
-        <ul>
-            <li *ngFor="let item of itemsService.items$ | async">
-                <a [routerLink]="['item', item.id]"
-                   [routerLinkActive]="'active'">
-                    Show {{item.name}}
-                </a>
-            </li>
-        </ul>
-
-        <p>
-            a works!
-        </p>
-
-        <pre>{{ itemsService.items$ | async | json }}</pre>
-
-    </div>
-    <div class="right">
-
-        <router-outlet></router-outlet>
-
-    </div>
-</div>
+<!-- TODO: should be a other type, condensed from type, only header info -->
+<e1-item *ngFor="let item of items$ | async; trackBy: trackByItem"
+         [item]="item"
+         [hidden]="(currentItemId$ | async) !== item.id"></e1-item>
 

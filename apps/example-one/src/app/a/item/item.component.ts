@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from './item.model';
+
+enum ITEMPART {
+  PARTONE = 'e1-one',
+  PARTTWO = 'e1-two'
+}
 
 @Component({
   selector: 'e1-item',
@@ -9,15 +13,23 @@ import { Item } from './item.model';
 })
 export class ItemComponent implements OnInit {
 
-  item: Item;
+  @Input() item: Item;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  ITEMPART = ITEMPART;
+  selectedItemPart = ITEMPART.PARTONE;
+
+
+  constructor() {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe((data: { item: Item }) => {
-      this.item = data.item;
-    });
+
+
+  }
+
+  // TODO: set in state machine
+  selectPart($event, part: ITEMPART) {
+    this.selectedItemPart = part;
   }
 
 }
