@@ -10,7 +10,7 @@ export interface AppStateModel {
 @State<AppStateModel>({
   name: 'AppState',
   defaults: {
-    selectedModule: MODULE.PATIENTS
+    selectedModule: MODULE.PATIENTS,
   }
 })
 export class AppState {

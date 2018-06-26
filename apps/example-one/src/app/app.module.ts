@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AppState } from './app.state';
 import { PatientsModule } from './patients/patients.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { PatientsModule } from './patients/patients.module';
       disabled: environment.production
     }),
 
+    AuthModule,
+
     /*
     We don't lazyload the PatientsModule, because it's our base functionality
     + we want to use it outside of it's route.
@@ -37,8 +40,14 @@ import { PatientsModule } from './patients/patients.module';
     RouterModule.forRoot([
       {
         path: '',
+
+        /*
+        Redirecting to calendar for demo purposes
+        This lazy loads this module
+         */
         redirectTo: 'calendar',
         pathMatch: 'full'
+
       },
 
       /*

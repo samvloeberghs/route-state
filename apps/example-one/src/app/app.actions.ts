@@ -6,3 +6,4 @@ export class SetCurrentSelectedModuleAction {
   constructor(public payload: MODULE) {
   }
 }
+
