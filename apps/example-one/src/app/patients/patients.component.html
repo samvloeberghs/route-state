@@ -3,7 +3,7 @@
             [patient]="patient"
             [hidden]="(currentPatientId$ | async) !== patient.id"></e1-patient>
 
-<p *ngIf="!(patients$ | async)">
+<p *ngIf="!(patients$ | async) || !(currentPatientId$ | async)">
     Patients works
 </p>
 

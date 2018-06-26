@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+
+import { SetCurrentSelectedModuleAction } from '../app.actions';
+import { MODULE } from '../app.state';
 
 @Component({
   selector: 'e1-calendar',
@@ -7,12 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() {
-    
+  constructor(private store: Store) {
+
   }
 
   ngOnInit() {
-
+    this.store.dispatch(new SetCurrentSelectedModuleAction(MODULE.CALENDAR));
   }
 
 }

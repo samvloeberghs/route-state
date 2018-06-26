@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { AppState } from './app.state';
 import { PatientsModule } from './patients/patients.module';
 import { AuthModule } from './auth/auth.module';
+import { AppPersistanceService } from './app-persistance.service';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,12 @@ import { AuthModule } from './auth/auth.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngfConfig: NgForageConfig) {
+  constructor(private readonly ngfConfig: NgForageConfig,
+              private readonly appPersistanceService: AppPersistanceService) {
+
     ngfConfig.configure({
       name: 'e1'
     });
+
   }
 }

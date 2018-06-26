@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { SetCurrentPatientIdAction } from '../patients.actions';
 import { SetCurrentSelectedModuleAction } from '../../app.actions';
-import { MODULE } from '../../app.component';
+import { MODULE } from '../../app.state';
 import { Patient } from '../patient/patient.model';
 
 @Component({

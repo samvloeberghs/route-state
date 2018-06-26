@@ -4,14 +4,14 @@ import { Store } from '@ngxs/store';
 
 import { SetCurrentPatientIdAction } from './patients.actions';
 
-export enum PERSISTANCE {
+export enum PATIENTS_PERSISTANCE {
   CURRENT_PATIENT_ID = 'CURRENT_PATIENT_ID'
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersistanceService {
+export class PatientsPersistanceService {
 
   constructor(private readonly ngf: NgForage,
               private store: Store) {
@@ -20,14 +20,14 @@ export class PersistanceService {
 
   serializeState(currentPatientId: number) {
     if (!!currentPatientId) {
-      this.ngf.setItem(PERSISTANCE.CURRENT_PATIENT_ID, currentPatientId);
+      this.ngf.setItem(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID, currentPatientId);
     } else {
-      this.ngf.removeItem(PERSISTANCE.CURRENT_PATIENT_ID);
+      this.ngf.removeItem(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID);
     }
   }
 
   private unserialize() {
-    this.ngf.getItem<number>(PERSISTANCE.CURRENT_PATIENT_ID).then((currentPatientId) => {
+    this.ngf.getItem<number>(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID).then((currentPatientId) => {
       if (!!currentPatientId) {
         this.store.dispatch(new SetCurrentPatientIdAction(currentPatientId));
       }

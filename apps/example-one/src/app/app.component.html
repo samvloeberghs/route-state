@@ -41,7 +41,7 @@
         Note: it has no content and all routes have the dummy component
         -->
 
-        <router-outlet [hidden]="(selectedModule$ | async) === MODULE.PATIENTS"></router-outlet>
+        <router-outlet [hidden]="(selectedModule$ | async) !== MODULE.PATIENTS"></router-outlet>
 
     </div>
 </div>

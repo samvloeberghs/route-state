@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { SetCurrentPatientIdAction } from './patients/patients.actions';
 import { Select, Store } from '@ngxs/store';
-import { SetCurrentSelectedModuleAction } from './app.actions';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-export enum MODULE {
-  PATIENTS = 'e1-patients',
-  CALENDAR = 'e1-calendar'
-}
+import { SetCurrentPatientIdAction } from './patients/patients.actions';
+import { SetCurrentSelectedModuleAction } from './app.actions';
+import { MODULE } from './app.state';
 
 @Component({
   selector: 'e1-root',

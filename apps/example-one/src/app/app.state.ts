@@ -1,7 +1,11 @@
 import { Action, State, StateContext } from '@ngxs/store';
 
-import { MODULE } from './app.component';
 import { SetCurrentSelectedModuleAction } from './app.actions';
+
+export enum MODULE {
+  PATIENTS = 'e1-patients',
+  CALENDAR = 'e1-calendar'
+}
 
 export interface AppStateModel {
   selectedModule: MODULE;
