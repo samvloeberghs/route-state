@@ -27,4 +27,7 @@ export class PatientsListComponent implements OnInit {
     this.store.dispatch(new SetCurrentPatientIdAction(id));
   }
 
+  trackByPatient(index: number, patient: Patient) {
+    return patient.id;
+  }
 }
