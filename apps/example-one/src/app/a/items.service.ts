@@ -22,8 +22,7 @@ export class ItemsService {
     }
   ];
 
-  constructor(private stateService: StateService,
-              private store: Store) {
+  constructor(private store: Store) {
     this.getItems();
   }
 

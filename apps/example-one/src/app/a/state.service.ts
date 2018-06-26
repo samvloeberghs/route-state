@@ -11,7 +11,6 @@ import { ItemsState } from './items.state';
 export class StateService {
 
   private currentItemsState = new BehaviorSubject<ItemsState>(undefined);
-  currentItemsState$ = this.currentItemsState.asObservable();
   currentItemId: number;
 
   private itemsState = {};

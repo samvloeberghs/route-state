@@ -58,7 +58,7 @@ import { AppState } from './app.state';
 export class AppModule {
   constructor(ngfConfig: NgForageConfig) {
     ngfConfig.configure({
-      name: 'items'
+      name: 'e1'
     });
   }
 }

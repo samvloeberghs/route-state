@@ -17,26 +17,11 @@ export class AComponent implements OnInit {
   @Select(state => state.ItemsState.currentItemId) currentItemId$: Observable<number>;
   @Select(state => state.ItemsState.items) items$: Observable<Item>;
 
-  constructor(public itemsService: ItemsService,
-              private store: Store,
-              private stateService: StateService,
-              private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
 
-    /*
-    this.store.select(state => state.ItemsState)
-      .pipe(
-        filter(_ => !!_.currentItemId),
-        distinctUntilChanged((a, b) => a.currentItemId === b.currentItemId)
-      )
-      .subscribe((currentItemState) => {
-        if (currentItemState.url) {
-          this.router.navigateByUrl(currentItemState.url);
-        }
-      });
-    */
   }
 
   trackByItem(index, item: Item) {
