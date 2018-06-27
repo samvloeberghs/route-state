@@ -13,7 +13,7 @@ import { PatientsState } from './patients.state';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientResolver } from './patient/patient.resolver';
 import { PatientsService } from './patients.service';
-import { PatientsPersistanceService } from './patients-persistance.service';
+import { PatientsPersistenceService } from './patients-persistence.service';
 
 const COMPONENTS = [
   FicheComponent, JournalComponent, PatientsComponent, PatientComponent, PatientsListComponent
@@ -41,6 +41,6 @@ const COMPONENTS = [
 })
 export class PatientsModule {
   constructor(private readonly patientsService: PatientsService,
-              private readonly patientsPersistanceService: PatientsPersistanceService) {
+              private readonly patientsPersistenceService: PatientsPersistenceService) {
   }
 }

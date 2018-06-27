@@ -1,6 +1,6 @@
 import { Action, State, StateContext } from '@ngxs/store';
 
-import { SetCurrentSelectedModuleAction } from './app.actions';
+import { SetCurrentSelectedModule } from './app.actions';
 
 export enum MODULE {
   PATIENTS = 'e1-patients',
@@ -23,8 +23,8 @@ export class AppState {
 
   }
 
-  @Action(SetCurrentSelectedModuleAction)
-  setCurrentSelectedModule({ getState, patchState, dispatch }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModuleAction) {
+  @Action(SetCurrentSelectedModule)
+  setCurrentSelectedModule({ getState, patchState, dispatch }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModule) {
     patchState({ selectedModule: payload });
   }
 

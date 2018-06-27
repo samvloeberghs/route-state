@@ -1,10 +1,8 @@
-import { User } from './user/user.model';
-
-export class LoginAction {
+export class Login {
   static readonly type = '[AuthState] LOGIN';
 }
 
-export class LogoutAction {
+export class Logout {
   static readonly type = '[AuthState] LOGOUT';
 
   constructor() {

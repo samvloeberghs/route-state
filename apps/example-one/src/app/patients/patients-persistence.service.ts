@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { NgForage } from 'ngforage';
 import { Store } from '@ngxs/store';
 
-import { SetCurrentPatientIdAction } from './patients.actions';
+import { SetCurrentPatientId } from './patients.actions';
 
-export enum PATIENTS_PERSISTANCE {
+export enum PATIENTS_PERSISTENCE {
   CURRENT_PATIENT_ID = 'CURRENT_PATIENT_ID'
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class PatientsPersistanceService {
+export class PatientsPersistenceService {
 
   constructor(private readonly ngf: NgForage,
               private store: Store) {
@@ -20,16 +20,16 @@ export class PatientsPersistanceService {
 
   serializeState(currentPatientId: number) {
     if (!!currentPatientId) {
-      this.ngf.setItem(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID, currentPatientId);
+      this.ngf.setItem(PATIENTS_PERSISTENCE.CURRENT_PATIENT_ID, currentPatientId);
     } else {
-      this.ngf.removeItem(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID);
+      this.ngf.removeItem(PATIENTS_PERSISTENCE.CURRENT_PATIENT_ID);
     }
   }
 
   private unserialize() {
-    this.ngf.getItem<number>(PATIENTS_PERSISTANCE.CURRENT_PATIENT_ID).then((currentPatientId) => {
+    this.ngf.getItem<number>(PATIENTS_PERSISTENCE.CURRENT_PATIENT_ID).then((currentPatientId) => {
       if (!!currentPatientId) {
-        this.store.dispatch(new SetCurrentPatientIdAction(currentPatientId));
+        this.store.dispatch(new SetCurrentPatientId(currentPatientId));
       }
     });
   }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { SetCurrentPatientIdAction } from '../patients.actions';
-import { SetCurrentSelectedModuleAction } from '../../app.actions';
+import { SetCurrentPatientId } from '../patients.actions';
+import { SetCurrentSelectedModule } from '../../app.actions';
 import { MODULE } from '../../app.state';
 import { Patient } from '../patient/patient.model';
 
@@ -23,8 +23,8 @@ export class PatientsListComponent implements OnInit {
   }
 
   selectPatient($event, id: number) {
-    this.store.dispatch(new SetCurrentSelectedModuleAction(MODULE.PATIENTS));
-    this.store.dispatch(new SetCurrentPatientIdAction(id));
+    this.store.dispatch(new SetCurrentSelectedModule(MODULE.PATIENTS));
+    this.store.dispatch(new SetCurrentPatientId(id));
   }
 
   trackByPatient(index: number, patient: Patient) {

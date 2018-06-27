@@ -1,8 +1,8 @@
 import { Action, State, StateContext } from '@ngxs/store';
 
 import { Patient } from './patient/patient.model';
-import { PatientsPersistanceService } from './patients-persistance.service';
-import { SetCurrentPatientIdAction, SetPatientsAction } from './patients.actions';
+import { PatientsPersistenceService } from './patients-persistence.service';
+import { SetCurrentPatientId, SetPatients } from './patients.actions';
 
 export interface PatientsStateModel {
   currentPatientId: number;
@@ -22,18 +22,18 @@ export interface PatientState {
 })
 export class PatientsState {
 
-  constructor(private readonly persistanceService: PatientsPersistanceService) {
+  constructor(private readonly persistenceService: PatientsPersistenceService) {
     console.log('PatientsState init');
   }
 
-  @Action(SetCurrentPatientIdAction)
-  setCurrentPatientId({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatientIdAction) {
+  @Action(SetCurrentPatientId)
+  setCurrentPatientId({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatientId) {
     patchState({ currentPatientId: payload });
-    this.persistanceService.serializeState(payload);
+    this.persistenceService.serializeState(payload);
   }
 
-  @Action(SetPatientsAction)
-  setPatients({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetPatientsAction) {
+  @Action(SetPatients)
+  setPatients({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetPatients) {
     patchState({ patients: payload });
   }
 

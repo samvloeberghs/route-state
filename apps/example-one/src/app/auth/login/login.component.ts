@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Select, Store } from '@ngxs/store';
 
 import { User } from '../user/user.model';
-import { LoginAction, LogoutAction } from '../auth.actions';
+import { Login, Logout } from '../auth.actions';
 
 @Component({
   selector: 'e1-login',
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     if ($event && $event.preventDefault) {
       $event.preventDefault();
     }
-    this.store.dispatch(new LoginAction());
+    this.store.dispatch(new Login());
 
   }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     if ($event && $event.preventDefault) {
       $event.preventDefault();
     }
-    this.store.dispatch(new LogoutAction());
+    this.store.dispatch(new Logout());
   }
 
 }
