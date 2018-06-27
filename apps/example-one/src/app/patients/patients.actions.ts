@@ -1,14 +1,14 @@
 import { Patient } from './patient/patient.model';
 
-export class SetCurrentPatientIdAction {
-  static readonly type = '[PatientsState] SET_CURRENT_PATIENT_ID';
+export class SetCurrentPatientId {
+  static readonly type = '[PatientsState] Set Current Patient Id';
 
   constructor(public payload: number) {
   }
 }
 
-export class SetPatientsAction {
-  static readonly type = '[PatientsState] SET_PATIENTS';
+export class SetPatients {
+  static readonly type = '[PatientsState] Set Patients';
 
   constructor(public payload: Patient[]) {
   }

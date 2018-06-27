@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgForage } from 'ngforage';
 import { Store } from '@ngxs/store';
 
-import { SetCurrentPatientIdAction } from './patients.actions';
+import { SetCurrentPatientId } from './patients.actions';
 
 export enum PATIENTS_PERSISTENCE {
   CURRENT_PATIENT_ID = 'CURRENT_PATIENT_ID'
@@ -29,7 +29,7 @@ export class PatientsPersistenceService {
   private unserialize() {
     this.ngf.getItem<number>(PATIENTS_PERSISTENCE.CURRENT_PATIENT_ID).then((currentPatientId) => {
       if (!!currentPatientId) {
-        this.store.dispatch(new SetCurrentPatientIdAction(currentPatientId));
+        this.store.dispatch(new SetCurrentPatientId(currentPatientId));
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { SetPatientsAction } from './patients.actions';
+import { SetPatients } from './patients.actions';
 import { Patient } from './patient/patient.model';
 import { NgForage } from 'ngforage';
 
@@ -28,7 +28,7 @@ export class PatientsService {
   }
 
   private getPatients() {
-    this.store.dispatch(new SetPatientsAction(this.patientsList));
+    this.store.dispatch(new SetPatients(this.patientsList));
   }
 
 }
