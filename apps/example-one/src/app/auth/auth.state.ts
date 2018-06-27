@@ -1,4 +1,4 @@
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 
 import { User } from './user/user.model';
 import { Login, Logout } from './auth.actions';
@@ -18,6 +18,11 @@ export interface AuthStateModel {
   }
 })
 export class AuthState {
+
+  @Selector()
+  static token(state: AuthStateModel) {
+    return state.token;
+  }
 
   constructor(private authService: AuthService) {
 
