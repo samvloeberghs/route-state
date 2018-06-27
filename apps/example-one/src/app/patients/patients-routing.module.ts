@@ -6,26 +6,24 @@ import { PatientResolver } from './patient/patient.resolver';
 const routes: Routes = [
   {
     path: 'patients',
-    component: DummyComponent,
     children: [
       {
         path: ':patientId',
-        component: DummyComponent,
         resolve:{
           patientSet: PatientResolver
         },
         children: [
           {
             path: '',
-            redirectTo: 'one',
+            redirectTo: 'fiche',
             pathMatch: 'full'
           },
           {
-            path: 'one',
+            path: 'fiche',
             component: DummyComponent
           },
           {
-            path: 'two',
+            path: 'journal',
             component: DummyComponent
           }
         ]

@@ -2,22 +2,22 @@
 
 <ul class="tabs">
     <li>
-        <a [routerLink]="['patients', patient.id, 'one']"
+        <a [routerLink]="['patients', patient.id, 'fiche']"
            [routerLinkActive]="'active'"
-           (click)="selectPart($event, PATIENTPART.PARTONE)">
-            Sub One
+           (click)="selectPart($event, PATIENTPART.FICHE)">
+            Fiche
         </a>
     </li>
     <li>
-        <a [routerLink]="['patients', patient.id, 'two']"
+        <a [routerLink]="['patients', patient.id, 'journal']"
            [routerLinkActive]="'active'"
-           (click)="selectPart($event, PATIENTPART.PARTTWO)">
-            Sub Two
+           (click)="selectPart($event, PATIENTPART.JOURNAL)">
+            Journal
         </a>
     </li>
 </ul>
 
-<e1-one [hidden]="selectedPatientPart !== PATIENTPART.PARTONE"></e1-one>
-<e1-two [hidden]="selectedPatientPart !== PATIENTPART.PARTTWO"></e1-two>
+<e1-fiche [hidden]="selectedPatientPart !== PATIENTPART.FICHE"></e1-fiche>
+<e1-journal [hidden]="selectedPatientPart !== PATIENTPART.JOURNAL"></e1-journal>
 
 

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { distinctUntilChanged, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { SetCurrentPatientIdAction } from './patients/patients.actions';
 import { SetCurrentSelectedModuleAction } from './app.actions';
 import { MODULE } from './app.state';
 

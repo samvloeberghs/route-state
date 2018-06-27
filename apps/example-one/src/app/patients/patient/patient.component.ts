@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Patient } from './patient.model';
 
 enum PATIENTPART {
-  PARTONE = 'e1-one',
-  PARTTWO = 'e1-two'
+  FICHE = 'e1-fiche',
+  JOURNAL = 'e1-journal'
 }
 
 @Component({
@@ -16,7 +16,7 @@ export class PatientComponent implements OnInit {
   @Input() patient: Patient;
 
   PATIENTPART = PATIENTPART;
-  selectedPatientPart = PATIENTPART.PARTONE;
+  selectedPatientPart = PATIENTPART.FICHE;
 
 
   constructor() {

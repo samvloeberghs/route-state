@@ -1,15 +1,15 @@
 <p>
-    one works!
+    journal works!
 </p>
 
-<form no-validate (ngSubmit)="submitOneForm($event)" [formGroup]="oneForm">
+<form no-validate (ngSubmit)="submitJournalForm($event)" [formGroup]="journalForm">
 
-    <div [class.error-field]="oneFormSubmitted && oneForm.get('email').errors">
+    <div [class.error-field]="journalFormSubmitted && journalForm.get('email').errors">
         <label aria-hidden="true" for="email" class="control-label">
             Email
         </label>
         <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email *"/>
-        <p *ngIf="oneFormSubmitted && ( oneForm.get('email').hasError('email') || oneForm.get('email').hasError('required'))"
+        <p *ngIf="journalFormSubmitted && ( journalForm.get('email').hasError('email') || journalForm.get('email').hasError('required'))"
            class="error-message">
             Valid email required
         </p>

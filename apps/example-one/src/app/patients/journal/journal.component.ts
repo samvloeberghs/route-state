@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'e1-one',
-  templateUrl: './one.component.html',
+  selector: 'e1-journal',
+  templateUrl: './journal.component.html',
   styles: []
 })
-export class OneComponent implements OnInit, OnDestroy {
+export class JournalComponent implements OnInit, OnDestroy {
 
-  oneForm: FormGroup;
-  oneFormSubmitted = false;
+  journalForm: FormGroup;
+  journalFormSubmitted = false;
 
   private subscriptions: Subscription[] = [];
 
@@ -20,7 +20,7 @@ export class OneComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.oneForm = this.formBuilder.group({
+    this.journalForm = this.formBuilder.group({
         email: ['', Validators.compose([
           Validators.required,
           Validators.email]
@@ -34,12 +34,12 @@ export class OneComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  submitOneForm($event: any) {
+  submitJournalForm($event: any) {
 
-    this.oneFormSubmitted = true;
-    const raw: any = this.oneForm.getRawValue();
+    this.journalFormSubmitted = true;
+    const raw: any = this.journalForm.getRawValue();
 
-    if (this.oneForm.valid) {
+    if (this.journalForm.valid) {
       // do stuff when valid
       console.log('valid', raw);
     } else {

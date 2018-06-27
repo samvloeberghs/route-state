@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 
 import { PatientsRoutingModule } from './patients-routing.module';
-import { OneComponent } from './one/one.component';
-import { TwoComponent } from './two/two.component';
+import { FicheComponent } from './fiche/fiche.component';
+import { JournalComponent } from './journal/journal.component';
 import { PatientsComponent } from './patients.component';
 import { PatientComponent } from './patient/patient.component';
 import { DummyComponent } from './dummy.component';
@@ -16,7 +16,7 @@ import { PatientsService } from './patients.service';
 import { PatientsPersistanceService } from './patients-persistance.service';
 
 const COMPONENTS = [
-  OneComponent, TwoComponent, PatientsComponent, PatientComponent, PatientsListComponent
+  FicheComponent, JournalComponent, PatientsComponent, PatientComponent, PatientsListComponent
 ];
 
 @NgModule({
