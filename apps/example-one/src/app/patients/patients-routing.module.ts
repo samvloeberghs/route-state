@@ -20,11 +20,14 @@ const routes: Routes = [
           },
           {
             path: 'fiche',
-            component: DummyComponent
+            component: DummyComponent,
           },
           {
             path: 'journal',
-            component: DummyComponent
+            component: DummyComponent,
+            resolve:{
+              partSet: JournalPartResolver
+            },
           }
         ]
       }

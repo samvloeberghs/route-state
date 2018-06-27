@@ -12,7 +12,7 @@ import { Login, Logout } from '../auth.actions';
 })
 export class LoginComponent implements OnInit {
 
-  @Select(state => state.AuthState.user) user$: Observable<User[]>;
+  @Select(state => state.AuthState.user) user$: Observable<User>;
 
   constructor(private readonly store: Store) {
   }

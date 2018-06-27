@@ -17,7 +17,7 @@
     </li>
 </ul>
 
-<e1-fiche [hidden]="selectedPatientPart !== PATIENTPART.FICHE"></e1-fiche>
-<e1-journal [hidden]="selectedPatientPart !== PATIENTPART.JOURNAL"></e1-journal>
+<e1-fiche [hidden]="patient?.state && patient?.state?.selectedPart !== PATIENTPART.FICHE"></e1-fiche>
+<e1-journal [hidden]="patient?.state?.selectedPart !== PATIENTPART.JOURNAL"></e1-journal>
 
 

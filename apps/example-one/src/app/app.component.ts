@@ -17,7 +17,7 @@ export class AppComponent {
   MODULE = MODULE;
   @Select(state => state.AppState.selectedModule) selectedModule$: Observable<MODULE>;
 
-  constructor(private router: Router,
+  constructor(private readonly router: Router,
               private readonly store: Store) {
   }
 
