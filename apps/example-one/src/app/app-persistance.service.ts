@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgForage } from 'ngforage';
 import { Store } from '@ngxs/store';
 
-import { SetCurrentSelectedModuleAction } from './app.actions';
+import { SetCurrentSelectedModule } from './app.actions';
 import { MODULE } from './app.state';
 
 export enum APP_PERSISTANCE {
@@ -30,7 +30,7 @@ export class AppPersistanceService {
   private unserialize() {
     this.ngf.getItem<MODULE>(APP_PERSISTANCE.CURRENT_MODULE).then((currentModule) => {
       if (!!currentModule) {
-        this.store.dispatch(new SetCurrentSelectedModuleAction(currentModule));
+        this.store.dispatch(new SetCurrentSelectedModule(currentModule));
       }
     });
   }

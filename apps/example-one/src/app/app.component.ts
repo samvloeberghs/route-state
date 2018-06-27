@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { distinctUntilChanged, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { SetCurrentSelectedModuleAction } from './app.actions';
+import { SetCurrentSelectedModule } from './app.actions';
 import { MODULE } from './app.state';
 
 @Component({
@@ -28,7 +28,7 @@ export class AppComponent {
         take(1)
       )
       .subscribe(currentPatientId => {
-        this.store.dispatch(new SetCurrentSelectedModuleAction(part));
+        this.store.dispatch(new SetCurrentSelectedModule(part));
         if (!!currentPatientId && part === MODULE.PATIENTS) {
           this.router.navigate(['patients', currentPatientId]);
         }
