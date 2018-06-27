@@ -24,6 +24,11 @@ export class AuthState {
     return state.token;
   }
 
+  @Selector()
+  static user(state: AuthStateModel) {
+    return state.user;
+  }
+
   constructor(private authService: AuthService) {
 
   }
