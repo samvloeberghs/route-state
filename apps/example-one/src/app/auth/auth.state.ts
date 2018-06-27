@@ -19,12 +19,12 @@ export interface AuthStateModel {
 })
 export class AuthState {
 
-  constructor(private readonly authService: AuthService) {
+  constructor(private authService: AuthService) {
 
   }
 
   @Action(Login)
-  login({ getState, patchState, dispatch }: StateContext<AuthStateModel>, {  }: Login) {
+  login({ patchState }: StateContext<AuthStateModel>, {}: Login) {
     return this.authService.login()
       .pipe(tap((authState: AuthStateModel) => {
         patchState(authState);
@@ -32,7 +32,7 @@ export class AuthState {
   }
 
   @Action(Logout)
-  logout({ getState, patchState, dispatch }: StateContext<AuthStateModel>, {  }: Logout) {
+  logout({ patchState }: StateContext<AuthStateModel>, {}: Logout) {
     return this.authService.logout()
       .pipe(tap((authState: AuthStateModel) => {
         patchState(authState);

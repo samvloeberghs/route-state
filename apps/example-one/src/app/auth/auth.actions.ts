@@ -1,9 +1,9 @@
 export class Login {
-  static readonly type = '[AuthState] LOGIN';
+  static readonly type = '[AuthState] Login';
 }
 
 export class Logout {
-  static readonly type = '[AuthState] LOGOUT';
+  static readonly type = '[AuthState] Logout';
 
   constructor() {
   }
