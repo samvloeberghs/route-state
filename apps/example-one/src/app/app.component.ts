@@ -32,7 +32,6 @@ export class AppComponent {
         this.store.dispatch(new SetCurrentSelectedModuleAction(part));
         if (!!currentPatientId && part === MODULE.PATIENTS) {
           this.router.navigate(['patients', currentPatientId]);
-          this.store.dispatch(new SetCurrentPatientIdAction(currentPatientId));
         }
       });
   }
