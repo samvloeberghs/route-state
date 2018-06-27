@@ -4,6 +4,7 @@ import { Select, Store } from '@ngxs/store';
 
 import { User } from '../user/user.model';
 import { Login, Logout } from '../auth.actions';
+import { AuthState } from '../auth.state';
 
 @Component({
   selector: 'e1-login',
@@ -12,7 +13,7 @@ import { Login, Logout } from '../auth.actions';
 })
 export class LoginComponent implements OnInit {
 
-  @Select(state => state.AuthState.user) user$: Observable<User[]>;
+  @Select(AuthState.user) user$: Observable<User[]>;
 
   constructor(private readonly store: Store) {
   }
