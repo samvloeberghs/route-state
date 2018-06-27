@@ -1,5 +1,5 @@
 {
-  "npmScope": "ngxs-route-state",
+  "npmScope": "route-state",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
