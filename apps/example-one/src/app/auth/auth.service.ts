@@ -1,26 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { SetUserAction } from './auth.actions';
+import { of as observableOf } from 'rxjs/Observable/of';
+import { Observable } from 'rxjs';
+
 import { User } from './user/user.model';
+import { AuthStateModel } from './auth.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private store: Store) {
+  constructor() {
   }
 
-  login() {
-    this.store.dispatch(new SetUserAction(<User>{
-      id: 1,
-      name: 'Antoine',
-      role: 'PO'
-    }));
+  login(): Observable<AuthStateModel> {
+    return observableOf(<AuthStateModel>{
+      token: '1234',
+      user: <User>{
+        id: 1,
+        name: 'Antoine',
+        role: 'PO'
+      }
+    });
   }
 
-  logout() {
-    this.store.dispatch(new SetUserAction(undefined));
+  logout(): Observable<AuthStateModel> {
+    return observableOf(<AuthStateModel>{
+      token: undefined,
+      user: undefined
+    });
   }
 
 }

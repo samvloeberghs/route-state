@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 
-import { AuthService } from '../auth.service';
 import { User } from '../user/user.model';
+import { LoginAction, LogoutAction } from '../auth.actions';
 
 @Component({
   selector: 'e1-login',
@@ -12,9 +12,9 @@ import { User } from '../user/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  @Select(state => state.AuthState.currentUser) currentUser$: Observable<User[]>;
+  @Select(state => state.AuthState.user) user$: Observable<User[]>;
 
-  constructor(private readonly authService: AuthService) {
+  constructor(private readonly store: Store) {
   }
 
   ngOnInit() {
@@ -24,14 +24,15 @@ export class LoginComponent implements OnInit {
     if ($event && $event.preventDefault) {
       $event.preventDefault();
     }
-    this.authService.login();
+    this.store.dispatch(new LoginAction());
+
   }
 
   logout($event?: Event) {
     if ($event && $event.preventDefault) {
       $event.preventDefault();
     }
-    this.authService.logout();
+    this.store.dispatch(new LogoutAction());
   }
 
 }
