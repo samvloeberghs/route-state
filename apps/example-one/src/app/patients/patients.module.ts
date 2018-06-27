@@ -14,6 +14,7 @@ import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientResolver } from './patient/patient.resolver';
 import { PatientsService } from './patients.service';
 import { PatientsPersistenceService } from './patients-persistence.service';
+import { JournalResolver } from './journal/journal.resolver';
 
 const COMPONENTS = [
   FicheComponent, JournalComponent, PatientsComponent, PatientComponent, PatientsListComponent
@@ -34,9 +35,6 @@ const COMPONENTS = [
   ],
   exports: [
     ...COMPONENTS
-  ],
-  providers: [
-    PatientResolver
   ]
 })
 export class PatientsModule {

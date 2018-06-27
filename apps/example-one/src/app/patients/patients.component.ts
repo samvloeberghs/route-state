@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';;
 import { Patient } from './patient/patient.model';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
+import { PatientsState } from './patients.state';
 
 @Component({
   selector: 'e1-patients',
@@ -10,8 +11,8 @@ import { Select } from '@ngxs/store';
 })
 export class PatientsComponent implements OnInit {
 
-  @Select(state => state.PatientsState.currentPatientId) currentPatientId$: Observable<number>;
-  @Select(state => state.PatientsState.patients) patients$: Observable<Patient[]>;
+  @Select(PatientsState.currentPatient) currentPatient$: Observable<Patient>;
+  @Select(PatientsState.patients) patients$: Observable<Patient[]>;
 
   constructor() {
   }

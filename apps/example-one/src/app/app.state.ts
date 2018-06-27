@@ -1,10 +1,10 @@
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, State, StateContext, Selector } from '@ngxs/store';
 
 import { SetCurrentSelectedModule } from './app.actions';
 
 export enum MODULE {
-  PATIENTS = 'e1-patients',
-  CALENDAR = 'e1-calendar'
+  PATIENTS = 'patients',
+  CALENDAR = 'calendar'
 }
 
 export interface AppStateModel {
@@ -19,12 +19,17 @@ export interface AppStateModel {
 })
 export class AppState {
 
+  @Selector()
+  static selectedModule(state: AppStateModel) {
+    return state.selectedModule;
+  }
+
   constructor() {
 
   }
 
   @Action(SetCurrentSelectedModule)
-  setCurrentSelectedModule({ getState, patchState, dispatch }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModule) {
+  setCurrentSelectedModule({ patchState }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModule) {
     patchState({ selectedModule: payload });
   }
 

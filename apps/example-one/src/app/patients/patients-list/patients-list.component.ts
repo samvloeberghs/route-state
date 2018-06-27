@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { SetCurrentPatientId } from '../patients.actions';
+import { SetCurrentPatient } from '../patients.actions';
 import { SetCurrentSelectedModule } from '../../app.actions';
 import { MODULE } from '../../app.state';
 import { Patient } from '../patient/patient.model';
+import { PatientsState } from '../patients.state';
 
 @Component({
   selector: 'e1-patients-list',
@@ -14,7 +15,7 @@ import { Patient } from '../patient/patient.model';
 })
 export class PatientsListComponent implements OnInit {
 
-  @Select(state => state.PatientsState.patients) patients$: Observable<Patient[]>;
+  @Select(PatientsState.patients) patients$: Observable<Patient[]>;
 
   constructor(private store: Store) {
   }
@@ -22,9 +23,9 @@ export class PatientsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectPatient($event, id: number) {
+  selectPatient($event, patient: Patient) {
     this.store.dispatch(new SetCurrentSelectedModule(MODULE.PATIENTS));
-    this.store.dispatch(new SetCurrentPatientId(id));
+    this.store.dispatch(new SetCurrentPatient(patient.id));
   }
 
   trackByPatient(index: number, patient: Patient) {

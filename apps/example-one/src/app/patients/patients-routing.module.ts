@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DummyComponent } from './dummy.component';
 import { PatientResolver } from './patient/patient.resolver';
+import { JournalResolver } from './journal/journal.resolver';
+import { CanActivateFicheGuard } from './fiche/can-activate-fiche.guard';
 
 const routes: Routes = [
   {
@@ -21,12 +23,15 @@ const routes: Routes = [
           {
             path: 'fiche',
             component: DummyComponent,
+            canActivate: [
+              CanActivateFicheGuard
+            ]
           },
           {
             path: 'journal',
             component: DummyComponent,
             resolve:{
-              partSet: JournalPartResolver
+              partSet: JournalResolver
             },
           }
         ]
@@ -37,7 +42,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    PatientResolver,
+    CanActivateFicheGuard,
+    JournalResolver
+  ]
 })
 export class PatientsRoutingModule {
 }
