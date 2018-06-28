@@ -2,6 +2,7 @@
 Tracking by patient id:
 only update the item in the interation if this specific kvp changes
 -->
+
 <e1-patient *ngFor="let patient of patients$ | async; trackBy: trackByPatient"
             [patient]="patient"
             [hidden]="(currentPatient$ | async)?.id !== patient.id"></e1-patient>

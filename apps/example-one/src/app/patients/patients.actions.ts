@@ -9,7 +9,7 @@ export class SetCurrentPatient {
 }
 
 export class SetCurrentPatientById {
-  static readonly type = '[PatientsState] Set Current Patient';
+  static readonly type = '[PatientsState] Set Current Patient By Id';
 
   constructor(public payload: number) {
   }

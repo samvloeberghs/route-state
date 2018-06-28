@@ -37,32 +37,31 @@ export class PatientsState {
     return state.patients;
   }
 
-  constructor(private readonly persistenceService: PatientsPersistenceService) {
-    console.log('PatientsState init');
+  constructor(private readonly patientsPersistenceService: PatientsPersistenceService) {
   }
 
   @Action(SetCurrentPatient)
-  setCurrentPatient({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatient) {
+  setCurrentPatient({ patchState }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatient) {
     patchState({ currentPatient: payload });
-    this.persistenceService.serializeState(payload);
+    this.patientsPersistenceService.serializeState(payload);
   }
 
   @Action(SetCurrentPatientById)
-  setCurrentPatientById({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatientById) {
+  setCurrentPatientById({ getState, patchState }: StateContext<PatientsStateModel>, { payload }: SetCurrentPatientById) {
     const currentPatient = getState().patients.find(patient => {
       return payload === patient.id;
     });
     patchState({ currentPatient: currentPatient });
-    this.persistenceService.serializeState(currentPatient);
+    this.patientsPersistenceService.serializeState(currentPatient);
   }
 
   @Action(SetPatients)
-  setPatients({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetPatients) {
+  setPatients({ getState, patchState }: StateContext<PatientsStateModel>, { payload }: SetPatients) {
     patchState({ patients: payload });
   }
 
   @Action(SetPatientPart)
-  setPatientPart({ getState, patchState, dispatch }: StateContext<PatientsStateModel>, { payload }: SetPatientPart) {
+  setPatientPart({ getState, patchState }: StateContext<PatientsStateModel>, { payload }: SetPatientPart) {
 
     const currentPatients = getState().patients;
     const patientIndex = currentPatients.findIndex(patient => {
@@ -80,7 +79,7 @@ export class PatientsState {
       };
       newPatients[patientIndex] = newPatient;
       patchState({ currentPatient: newPatient, patients: newPatients });
-      this.persistenceService.serializeState(newPatient);
+      this.patientsPersistenceService.serializeState(newPatient);
 
     }
 
