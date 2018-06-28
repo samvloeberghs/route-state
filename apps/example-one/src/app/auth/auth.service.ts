@@ -10,9 +10,6 @@ import { AuthStateModel } from './auth.state';
 })
 export class AuthService {
 
-  constructor() {
-  }
-
   login(): Observable<AuthStateModel> {
     return observableOf(<AuthStateModel>{
       token: '1234',

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';;
-import { Patient } from './patient/patient.model';
+import { Component } from '@angular/core';;
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
+
+import { Patient } from './patient/patient.model';
 import { PatientsState } from './patients.state';
 
 @Component({
@@ -9,18 +10,15 @@ import { PatientsState } from './patients.state';
   templateUrl: './patients.component.html',
   styles: []
 })
-export class PatientsComponent implements OnInit {
+export class PatientsComponent {
 
   @Select(PatientsState.currentPatient) currentPatient$: Observable<Patient>;
   @Select(PatientsState.patients) patients$: Observable<Patient[]>;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-
-  }
-
+  /*
+  Tracking by patient id:
+  only update the item in the interation if this specific kvp changes
+   */
   trackByPatient(index, patient: Patient) {
     return patient.id;
   }

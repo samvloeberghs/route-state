@@ -14,7 +14,7 @@ export class JournalComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private readonly formBuilder: FormBuilder) {
 
   }
 

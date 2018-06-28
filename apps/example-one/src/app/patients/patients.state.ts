@@ -73,9 +73,6 @@ export class PatientsState {
         }
       };
       newPatients[patientIndex] = newPatient;
-      console.log(newPatient);
-      console.log(newPatients);
-
       patchState({ currentPatient: newPatient, patients: newPatients });
 
     }

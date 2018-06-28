@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
@@ -13,14 +13,11 @@ import { PatientsState } from '../patients.state';
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.scss']
 })
-export class PatientsListComponent implements OnInit {
+export class PatientsListComponent {
 
   @Select(PatientsState.patients) patients$: Observable<Patient[]>;
 
-  constructor(private store: Store) {
-  }
-
-  ngOnInit() {
+  constructor(private readonly store: Store) {
   }
 
   selectPatient($event, patient: Patient) {
@@ -28,6 +25,9 @@ export class PatientsListComponent implements OnInit {
     this.store.dispatch(new SetCurrentPatient(patient.id));
   }
 
+  /*
+  Same track by functionality as in patients.component
+   */
   trackByPatient(index: number, patient: Patient) {
     return patient.id;
   }

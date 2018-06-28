@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { DummyComponent } from './dummy.component';
 import { PatientResolver } from './patient/patient.resolver';
 import { JournalResolver } from './journal/journal.resolver';
@@ -22,6 +23,10 @@ const routes: Routes = [
           },
           {
             path: 'fiche',
+            /*
+            The dummy component is used here because leaf routes
+            in a routing tree require an attached component
+             */
             component: DummyComponent,
             canActivate: [
               CanActivateFicheGuard
@@ -29,6 +34,10 @@ const routes: Routes = [
           },
           {
             path: 'journal',
+            /*
+            The dummy component is used here because leaf routes
+            in a routing tree require an attached component
+            */
             component: DummyComponent,
             resolve:{
               partSet: JournalResolver

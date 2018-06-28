@@ -15,7 +15,12 @@ export enum APP_PERSISTENCE {
 export class AppPersistenceService {
 
   constructor(private readonly ngf: NgForage,
-              private store: Store) {
+              private readonly store: Store) {
+
+    /*
+    See injection in app.module.ts
+    => this unserializes the data while bootstrapping the app module
+     */
     this.unserialize();
   }
 

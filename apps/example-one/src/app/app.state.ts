@@ -24,10 +24,6 @@ export class AppState {
     return state.selectedModule;
   }
 
-  constructor() {
-
-  }
-
   @Action(SetCurrentSelectedModule)
   setCurrentSelectedModule({ patchState }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModule) {
     patchState({ selectedModule: payload });

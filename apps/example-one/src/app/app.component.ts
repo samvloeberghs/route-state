@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { SetCurrentSelectedModule } from './app.actions';
@@ -32,9 +32,14 @@ export class AppComponent {
         this.store.dispatch(new SetCurrentSelectedModule(part));
 
         if (!!patientsState.currentPatient && part === MODULE.PATIENTS) {
-          if(patientsState.currentPatient.state) {
+          if (patientsState.currentPatient.state) {
+
+            /*
+            You would need to add more patient parts here if they are needed
+            Currently no other way than switching
+            Can be made more generic if required
+             */
             switch (patientsState.currentPatient.state.selectedPart) {
-              // ADD MORE HERE
               case PATIENTPART.JOURNAL:
                 this.router.navigate(['patients', patientsState.currentPatient.id, 'journal']);
                 break;
@@ -42,6 +47,7 @@ export class AppComponent {
                 this.router.navigate(['patients', patientsState.currentPatient.id]);
                 break;
             }
+
           } else {
             this.router.navigate(['patients', patientsState.currentPatient.id]);
           }

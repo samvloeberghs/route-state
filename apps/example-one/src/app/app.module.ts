@@ -66,6 +66,11 @@ import { AppPersistenceService } from './app-persistence.service';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  /*
+  We inject the appPersistanceService here because we want to instantiate it
+  as soon as the app module loads => it unserializes the browser storage cache
+   */
   constructor(private readonly ngfConfig: NgForageConfig,
               private readonly appPersistenceService: AppPersistenceService) {
 

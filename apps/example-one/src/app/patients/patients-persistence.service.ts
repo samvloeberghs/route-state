@@ -15,8 +15,14 @@ export enum PATIENTS_PERSISTENCE {
 export class PatientsPersistenceService {
 
   constructor(private readonly ngf: NgForage,
-              private store: Store) {
+              private readonly store: Store) {
+
+    /*
+    See injection in patients.module.ts
+    => this unserializes the data while bootstrapping the patients module
+     */
     this.unserialize();
+
   }
 
   serializeState(currentPatient: Patient) {

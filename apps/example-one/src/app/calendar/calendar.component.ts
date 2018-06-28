@@ -11,8 +11,7 @@ import { MODULE } from '../app.state';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private store: Store) {
-
+  constructor(private readonly store: Store) {
   }
 
   ngOnInit() {

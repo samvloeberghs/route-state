@@ -16,6 +16,10 @@ export class PatientResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot,
           routerState: RouterStateSnapshot): Observable<boolean> {
 
+    /*
+    This resolver makes sure that our store is updated
+    to select the correct current patient
+     */
     return this.store.dispatch(new SetCurrentPatient(+route.params.patientId))
       .pipe(
         take(1),

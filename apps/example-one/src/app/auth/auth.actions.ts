@@ -4,8 +4,5 @@ export class Login {
 
 export class Logout {
   static readonly type = '[AuthState] Logout';
-
-  constructor() {
-  }
 }
 

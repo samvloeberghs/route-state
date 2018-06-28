@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import { Patient } from './patient.model';
@@ -10,16 +10,12 @@ import { SetPatientPart } from '../patients.actions';
   templateUrl: './patient.component.html',
   styles: []
 })
-export class PatientComponent implements OnInit {
+export class PatientComponent {
 
   @Input() patient: Patient;
   PATIENTPART = PATIENTPART;
 
   constructor(private readonly store: Store) {
-  }
-
-  ngOnInit() {
-
   }
 
   selectPart($event, part: PATIENTPART) {

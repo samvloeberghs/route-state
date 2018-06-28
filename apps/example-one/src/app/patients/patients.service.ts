@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { NgForage } from 'ngforage';
+
 import { SetPatients } from './patients.actions';
 import { Patient } from './patient/patient.model';
-import { NgForage } from 'ngforage';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class PatientsService {
 
   constructor(private readonly ngf: NgForage,
               private readonly store: Store) {
+
+    /*
+    Just feed the application with some patients
+     */
     this.getPatients();
   }
 

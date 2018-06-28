@@ -30,7 +30,6 @@ export class AuthState {
   }
 
   constructor(private readonly authService: AuthService) {
-
   }
 
   @Action(Login)
