@@ -28,7 +28,7 @@ export class CanActivateFicheGuard implements CanActivate {
         .pipe(
           take(1)
         ).subscribe((currentPatient: Patient) => {
-        if (currentPatient.state) {
+        if (currentPatient && currentPatient.state) {
           switch (currentPatient.state.selectedPart) {
             // ADD MORE HERE
             case PATIENTPART.JOURNAL:
