@@ -1,9 +1,9 @@
 import { Action, State, StateContext, Selector } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
 
 import { User } from './user/user.model';
 import { Login, Logout } from './auth.actions';
 import { AuthService } from './auth.service';
-import { tap } from 'rxjs/operators';
 
 export interface AuthStateModel {
   token: string;
