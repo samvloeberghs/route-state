@@ -29,6 +29,7 @@ export class AppComponent {
         take(1)
       )
       .subscribe((patientsState: PatientsStateModel) => {
+
         this.store.dispatch(new SetCurrentSelectedModule(part));
 
         if (!!patientsState.currentPatient && part === MODULE.PATIENTS) {

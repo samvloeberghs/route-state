@@ -74,6 +74,7 @@ export class PatientsState {
       };
       newPatients[patientIndex] = newPatient;
       patchState({ currentPatient: newPatient, patients: newPatients });
+      this.persistenceService.serializeState(newPatient);
 
     }
 

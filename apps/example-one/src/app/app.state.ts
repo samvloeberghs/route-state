@@ -1,6 +1,7 @@
 import { Action, State, StateContext, Selector } from '@ngxs/store';
 
 import { SetCurrentSelectedModule } from './app.actions';
+import { AppPersistenceService } from './app-persistence.service';
 
 export enum MODULE {
   PATIENTS = 'patients',
@@ -14,7 +15,7 @@ export interface AppStateModel {
 @State<AppStateModel>({
   name: 'AppState',
   defaults: {
-    selectedModule: MODULE.PATIENTS,
+    selectedModule: MODULE.PATIENTS
   }
 })
 export class AppState {
@@ -24,9 +25,14 @@ export class AppState {
     return state.selectedModule;
   }
 
+  constructor(private readonly appPersistanceService: AppPersistenceService) {
+
+  }
+
   @Action(SetCurrentSelectedModule)
   setCurrentSelectedModule({ patchState }: StateContext<AppStateModel>, { payload }: SetCurrentSelectedModule) {
     patchState({ selectedModule: payload });
+    this.appPersistanceService.serializeState(payload);
   }
 
 }
