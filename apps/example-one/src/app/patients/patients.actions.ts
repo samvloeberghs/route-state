@@ -4,6 +4,13 @@ import { PATIENTPART } from './patients.state';
 export class SetCurrentPatient {
   static readonly type = '[PatientsState] Set Current Patient';
 
+  constructor(public payload: Patient) {
+  }
+}
+
+export class SetCurrentPatientById {
+  static readonly type = '[PatientsState] Set Current Patient';
+
   constructor(public payload: number) {
   }
 }

@@ -36,7 +36,7 @@ export class PatientsPersistenceService {
   private unserialize() {
     this.ngf.getItem<Patient>(PATIENTS_PERSISTENCE.CURRENT_PATIENT).then((currentPatient) => {
       if (!!currentPatient) {
-        this.store.dispatch(new SetCurrentPatient(currentPatient.id));
+        this.store.dispatch(new SetCurrentPatient(currentPatient));
       }
     });
   }

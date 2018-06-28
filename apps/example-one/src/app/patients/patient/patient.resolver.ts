@@ -5,7 +5,7 @@ import { of as observableOf } from 'rxjs/Observable/of';
 import { take, switchMap } from 'rxjs/operators';
 import { Store } from '@ngxs/store';
 
-import { SetCurrentPatient } from '../patients.actions';
+import { SetCurrentPatientById } from '../patients.actions';
 
 @Injectable()
 export class PatientResolver implements Resolve<boolean> {
@@ -20,7 +20,7 @@ export class PatientResolver implements Resolve<boolean> {
     This resolver makes sure that our store is updated
     to select the correct current patient
      */
-    return this.store.dispatch(new SetCurrentPatient(+route.params.patientId))
+    return this.store.dispatch(new SetCurrentPatientById(+route.params.patientId))
       .pipe(
         take(1),
         switchMap(_ => observableOf(true))

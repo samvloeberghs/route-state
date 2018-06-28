@@ -22,7 +22,7 @@ export class PatientsListComponent {
 
   selectPatient($event, patient: Patient) {
     this.store.dispatch(new SetCurrentSelectedModule(MODULE.PATIENTS));
-    this.store.dispatch(new SetCurrentPatient(patient.id));
+    this.store.dispatch(new SetCurrentPatient(patient));
   }
 
   /*
